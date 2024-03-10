@@ -66,6 +66,18 @@ export class AuthService {
 
   };
 
+  async checkAuthStatus( user: User ){
+
+    const { _id, fullName, email,} = user;
+
+    return {
+      _id, fullName, email,
+      token: this.getJwtToken({ _id: user._id})
+    };
+
+  }
+
+
 
   //metodo para generar jwt
   private getJwtToken(payload: JwtPayload){
